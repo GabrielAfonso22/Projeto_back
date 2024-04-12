@@ -89,6 +89,9 @@ Compatibilidade: Certificar-se de que a API seja compatível com as tecnologias 
 4. Utilize as rotas da API conforme descrito na documentação para interagir com o sistema de cadastro de lojistas.
 
 ## Colaboradores
-
-
+Caio Monteiro
+Gabriel Afonso
+Marcus Vinicius 
+João Gois
+Felipe Seda
 
