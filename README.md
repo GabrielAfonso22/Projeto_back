@@ -6,7 +6,7 @@ Esta documentação descreve os requisitos e funcionalidades da API de Cadastro 
 
 ## Requisitos Funcionais
 
-### R1 - Cadastro de Lojista
+### R1  -  Cadastro de Lojista
 
 1. **Cadastro do Lojista:**
    - Permitir o cadastro de lojistas no e-commerce.
@@ -103,5 +103,6 @@ Compatibilidade: Certificar-se de que a API seja compatível com as tecnologias 
 4. Utilize as rotas da API conforme descrito na documentação para interagir com o sistema de cadastro de lojistas.
 
 ## Colaboradores
+
 
 
