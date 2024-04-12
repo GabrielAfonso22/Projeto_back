@@ -67,6 +67,34 @@ Esta documentação descreve os requisitos e funcionalidades da API de Cadastro 
 - **MySQL:** Sistema de gerenciamento de banco de dados relacional.
 - **Java 21:** Versão mais recente do Java na época do desenvolvimento.
 
+## Requisitos Funcionais:
+
+Registro de Lojista: Permitir que novos lojistas se cadastrem na plataforma fornecendo informações como nome da loja, CNPJ, endereço, informações de contato, etc.
+
+Autenticação: Implementar um sistema de autenticação seguro para que os lojistas registrados possam fazer login na plataforma.
+
+Gestão de Produtos: Permitir que os lojistas adicionem, atualizem, visualizem e removam produtos de seu catálogo de vendas.
+
+Gestão de Pedidos: Fornecer funcionalidades para os lojistas visualizarem e gerenciarem os pedidos recebidos, incluindo status do pedido, informações do cliente, etc.
+
+Integração de Pagamento: Integrar um sistema de pagamento para processar transações de compra dos clientes.
+
+Relatórios de Vendas: Oferecer aos lojistas a capacidade de gerar relatórios de vendas para acompanhar o desempenho de suas lojas.
+
+## Requisitos Não Funcionais:
+
+Segurança: Garantir a segurança dos dados dos lojistas e dos clientes, implementando medidas como criptografia de dados, autenticação robusta e prevenção contra ataques de segurança.
+
+Desempenho: Assegurar que a API seja eficiente e responsiva, mesmo com um grande volume de acessos e transações simultâneas.
+
+Escalabilidade: Projetar a API para ser escalável, permitindo que ela cresça conforme a demanda, tanto em termos de número de lojistas quanto de volume de transações.
+
+Disponibilidade: Garantir que a API esteja sempre disponível para os lojistas e clientes, minimizando o tempo de inatividade e implementando medidas de recuperação em caso de falhas.
+
+Documentação: Fornecer uma documentação clara e abrangente da API, incluindo exemplos de uso, endpoints disponíveis, parâmetros necessários e possíveis códigos de erro.
+
+Compatibilidade: Certificar-se de que a API seja compatível com as tecnologias especificadas (Lombok, Spring Boot, MySQL e Java 21) e que possa ser facilmente integrada com outras ferramentas e sistemas.
+
 ## Como Usar
 
 1. Clone este repositório.
