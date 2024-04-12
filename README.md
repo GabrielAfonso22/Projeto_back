@@ -90,8 +90,12 @@ Compatibilidade: Certificar-se de que a API seja compatível com as tecnologias 
 
 ## Colaboradores
 Caio Monteiro
+
 Gabriel Afonso
+
 Marcus Vinicius 
+
 João Gois
+
 Felipe Seda
 
