@@ -51,6 +51,7 @@ Compatibilidade: Certificar-se de que a API seja compatível com as tecnologias 
 | **nome_completo**       | string         | SIM         |
 | **nome**                | string         | NAO         |
 | **sobrenome**           | string         | NAO         |
+| **cnpj**                | string         | SIM         |                
 | **email**               | string         | SIM         |
 | **telefone**            | string         | SIM         |
 | **endereco.rua**        | string         | SIM         |
