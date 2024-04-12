@@ -49,6 +49,8 @@ Esta documentação descreve os requisitos e funcionalidades da API de Cadastro 
 
 3. **Revisão Administrativa:**
    - Verificar se os campos obrigatórios foram preenchidos corretamente e se o CNPJ é válido.
+     
+   - Os colaboradores precisam ter acesso a uma interface administrativa específica para analisar os dados cadastrais dos lojistas.
 
 4. **Aprovação ou Rejeição:**
    - Administradores podem aprovar ou rejeitar o cadastro com base na conformidade com as políticas do e-commerce.
