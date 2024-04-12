@@ -41,40 +41,44 @@ Compatibilidade: Certificar-se de que a API seja compatível com as tecnologias 
 
 ---
 
-## Cadastro de Lojista
-
 ### Campos
 
 #### Cadastro DTO
 
-| Campo               | Tipo       | Obrigatório |
-| ------------------- | ---------- | ----------- |
-| **nome_completo**   | string     | SIM         |
-| **nome**            | string     | NAO         |
-| **sobrenome**       | string     | NAO         |
-| **email**           | string     | SIM         |
-| **telefone**        | string     | SIM         |
-| **endereco.rua**    | string     | SIM         |
-| **endereco.num**    | string     | SIM         |
-| **endereco.bairro** | string     | SIM         |
-| **endereco.cidade** | string     | SIM         |
-| **endereco.rua**    | string     | SIM         |
-| **endereco.estado** | string     | SIM         |
-| **endereco.pais**   | string     | SIM         |
-| **facebook_url**    | string     | NAO         |
-| **instagram_url**   | string     | NAO         |
-| **twitter_url**     | string     | NAO         |
-| **loja_url**        | string     | NAO         |
-| **num_prod_max**    | string     | NAO         |
-| **exibe_prod_ad**   | string     | NAO         |
-| **nome_banco**      | string     | NAO         |
-| **num_agencia**     | string     | NAO         |
-| **num_conta**       | string     | NAO         |
+| Campo                   | Tipo           | Obrigatório |
+| ----------------------- | -------------- | ----------- |
+| **nome_completo**       | string         | SIM         |
+| **nome**                | string         | NAO         |
+| **sobrenome**           | string         | NAO         |
+| **email**               | string         | SIM         |
+| **telefone**            | string         | SIM         |
+| **endereco.rua**        | string         | SIM         |
+| **endereco.num**        | string         | SIM         |
+| **endereco.bairro**     | string         | SIM         |
+| **endereco.cidade**     | string         | SIM         |
+| **endereco.rua**        | string         | SIM         |
+| **endereco.estado**     | string         | SIM         |
+| **endereco.pais**       | string         | SIM         |
+| **facebook_url**        | string         | NAO         |
+| **instagram_url**       | string         | NAO         |
+| **twitter_url**         | string         | NAO         |
+| **loja_url**            | string         | NAO         |
+| **num_prod_max**        | integer        | NAO         |
+| **exibe_prod_ad**       | boolean        | NAO         |
+| **nome_banco**          | string         | NAO         |
+| **num_agencia**         | string         | NAO         |
+| **num_conta**           | string         | NAO         |
 
 
-
-
-
+### Endpoints
+| Função                           | Método  | Endpoint                                       |
+| -------------------------------- | ------- | ---------------------------------------------- |
+| **Requisição de Cadastro**       | POST    | `lojista/cadastro`                             |
+| **Listar Requisições**           | GET     | `admin/requisicoes-cadastro`                   |
+| **Aprovar Requisição**           | POST    | `admin/cadastro/{id}/aprovar`                  |
+| **Aprovar Requisição**           | POST    | `admin/cadastro/{id}/negar`                    |
+| **Listar Lojistas**              | GET     | `admin/listar-lojistas`                        |
+  
 
 ## Como Usar
 
