@@ -39,6 +39,43 @@ Documentação: Fornecer uma documentação clara e abrangente da API, incluindo
 
 Compatibilidade: Certificar-se de que a API seja compatível com as tecnologias especificadas (Lombok, Spring Boot, MySQL e Java 21) e que possa ser facilmente integrada com outras ferramentas e sistemas.
 
+---
+
+## Cadastro de Lojista
+
+### Campos
+
+#### Cadastro DTO
+
+| Campo               | Tipo       | Obrigatório |
+| ------------------- | ---------- | ----------- |
+| **nome_completo**   | string     | SIM         |
+| **nome**            | string     | NAO         |
+| **sobrenome**       | string     | NAO         |
+| **email**           | string     | SIM         |
+| **telefone**        | string     | SIM         |
+| **endereco.rua**    | string     | SIM         |
+| **endereco.num**    | string     | SIM         |
+| **endereco.bairro** | string     | SIM         |
+| **endereco.cidade** | string     | SIM         |
+| **endereco.rua**    | string     | SIM         |
+| **endereco.estado** | string     | SIM         |
+| **endereco.pais**   | string     | SIM         |
+| **facebook_url**    | string     | NAO         |
+| **instagram_url**   | string     | NAO         |
+| **twitter_url**     | string     | NAO         |
+| **loja_url**        | string     | NAO         |
+| **num_prod_max**    | string     | NAO         |
+| **exibe_prod_ad**   | string     | NAO         |
+| **nome_banco**      | string     | NAO         |
+| **num_agencia**     | string     | NAO         |
+| **num_conta**       | string     | NAO         |
+
+
+
+
+
+
 ## Como Usar
 
 1. Clone este repositório.
