@@ -43,10 +43,11 @@ Compatibilidade: Certificar-se de que a API seja compatível com as tecnologias 
 
 ### Campos
 
-#### Cadastro DTO
+#### Lojista
 
 | Campo                   | Tipo           | Obrigatório |
 | ----------------------- | -------------- | ----------- |
+| **id**                  | integer        | -           |
 | **nome_completo**       | string         | SIM         |
 | **nome**                | string         | NAO         |
 | **sobrenome**           | string         | NAO         |
