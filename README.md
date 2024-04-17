@@ -47,20 +47,17 @@ Compatibilidade: Certificar-se de que a API seja compatível com as tecnologias 
 
 | Campo                   | Tipo           | Obrigatório |
 | ----------------------- | -------------- | ----------- |
-| **id**                  | integer        | -           |
-| **nome_completo**       | string         | SIM         |
-| **nome**                | string         | NAO         |
-| **sobrenome**           | string         | NAO         |
+| **nome_loja**           | string         | SIM         |
+| **nome_lojista**        | string         | NAO         |
+| **sobrenome_lojista**   | string         | NAO         |
 | **cnpj**                | string         | SIM         |                
 | **email**               | string         | SIM         |
 | **telefone**            | string         | SIM         |
-| **endereco.rua**        | string         | SIM         |
-| **endereco.num**        | string         | SIM         |
+| **endereco.logradouro** | string         | SIM         |
+| **endereco.numero**     | string         | SIM         |
 | **endereco.bairro**     | string         | SIM         |
 | **endereco.cidade**     | string         | SIM         |
-| **endereco.rua**        | string         | SIM         |
-| **endereco.estado**     | string         | SIM         |
-| **endereco.pais**       | string         | SIM         |
+| **endereco.uf**         | string         | SIM         |
 | **facebook_url**        | string         | NAO         |
 | **instagram_url**       | string         | NAO         |
 | **twitter_url**         | string         | NAO         |
@@ -70,6 +67,7 @@ Compatibilidade: Certificar-se de que a API seja compatível com as tecnologias 
 | **nome_banco**          | string         | NAO         |
 | **num_agencia**         | string         | NAO         |
 | **num_conta**           | string         | NAO         |
+| **cod_banco**           | string         | NAO         |
 
 
 ### Endpoints
@@ -80,6 +78,11 @@ Compatibilidade: Certificar-se de que a API seja compatível com as tecnologias 
 | **Aprovar Requisição**           | POST    | `admin/cadastro/{id}/aprovar`                  |
 | **Aprovar Requisição**           | POST    | `admin/cadastro/{id}/negar`                    |
 | **Listar Lojistas**              | GET     | `admin/listar-lojistas`                        |
+
+
+## Modelagem BD
+
+[MER](https://github.com/GabrielAfonso22/Projeto_back/imagens/mer.png)
   
 
 ## Como Usar
