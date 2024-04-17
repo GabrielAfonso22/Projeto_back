@@ -82,7 +82,7 @@ Compatibilidade: Certificar-se de que a API seja compatível com as tecnologias 
 
 ## Modelagem BD
 
-[MER](https://github.com/GabrielAfonso22/Projeto_back/imagens/mer.png)
+[MER](imagens/mer.png)
   
 
 ## Como Usar
