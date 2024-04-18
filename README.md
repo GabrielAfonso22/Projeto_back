@@ -13,17 +13,35 @@ Esta documentação descreve os requisitos e funcionalidades da API de Cadastro 
 
 ## Requisitos Funcionais:
 
-Registro de Lojista: Permitir que novos lojistas se cadastrem na plataforma fornecendo informações como nome da loja, CNPJ, endereço, informações de contato, etc.
+Registro de Lojista:
+Os lojistas devem ser capazes de se registrar na plataforma fornecendo informações básicas, como nome da loja, CNPJ, endereço físico e de e-mail, telefone de contato e uma senha segura.
+O sistema deve validar o CNPJ fornecido para garantir sua autenticidade.
+Após o registro bem-sucedido, os lojistas devem receber um e-mail de confirmação.
 
-Autenticação: Implementar um sistema de autenticação seguro para que os lojistas registrados possam fazer login na plataforma.
+Autenticação:
+Os lojistas registrados devem poder fazer login na plataforma usando seu CNPJ/e-mail e senha.
+A autenticação deve ser protegida por meio de técnicas como hashing de senha e tokens de autenticação JWT (JSON Web Tokens).
+O sistema deve fornecer um mecanismo para redefinição de senha caso os lojistas a esqueçam.
 
-Gestão de Produtos: Permitir que os lojistas adicionem, atualizem, visualizem e removam produtos de seu catálogo de vendas.
+Gestão de Produtos:
+Os lojistas devem poder adicionar novos produtos especificando detalhes como nome, descrição, preço, quantidade em estoque, categoria, imagens, etc.
+Eles devem ser capazes de atualizar e excluir produtos existentes.
+A API deve suportar operações de busca para que os lojistas possam encontrar facilmente produtos em seu catálogo.
 
-Gestão de Pedidos: Fornecer funcionalidades para os lojistas visualizarem e gerenciarem os pedidos recebidos, incluindo status do pedido, informações do cliente, etc.
+Gestão de Pedidos:
+Os lojistas devem ter acesso aos detalhes dos pedidos recebidos, incluindo informações do cliente, produtos comprados, status do pedido, etc.
+Eles devem poder atualizar o status do pedido conforme o progresso (por exemplo, "recebido", "em processamento", "enviado", "entregue", etc.).
+A API deve permitir a geração de faturas e recibos para os pedidos.
 
-Integração de Pagamento: Integrar um sistema de pagamento para processar transações de compra dos clientes.
+Integração de Pagamento:
+Os lojistas devem ser capazes de integrar métodos de pagamento populares à sua loja, como cartões de crédito, PayPal, boleto bancário, etc.
+A API deve fornecer endpoints seguros para processar transações de pagamento de forma transparente e segura.
+O sistema deve registrar e notificar os lojistas sobre o status das transações (por exemplo, "pago com sucesso", "pendente", "falha na transação", etc.).
 
-Relatórios de Vendas: Oferecer aos lojistas a capacidade de gerar relatórios de vendas para acompanhar o desempenho de suas lojas.
+Relatórios de Vendas:
+Os lojistas devem poder gerar relatórios detalhados sobre suas vendas, incluindo métricas como receita total, número de pedidos, produtos mais vendidos, etc.
+A API deve suportar filtros e opções de personalização para que os lojistas possam analisar suas vendas de acordo com suas necessidades específicas.
+Os relatórios devem ser exportáveis em formatos comuns, como CSV ou PDF, para facilitar a análise e o compartilhamento.
 
 ## Requisitos Não Funcionais:
 
