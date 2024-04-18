@@ -118,7 +118,10 @@ Compatibilidade: Certificar-se de que a API seja compatível com as tecnologias 
 ## Modelagem BD
 
 ![MER](imagens/mer.png)
-  
+
+### Board Kanban:
+
+Link: https://trello.com/b/MVjFrjpx/kanban
 
 ## Como Usar
 
