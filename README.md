@@ -119,7 +119,7 @@ Compatibilidade: Certificar-se de que a API seja compatível com as tecnologias 
 
 ![MER](imagens/mer.png)
 
-### Board Kanban:
+## Board Kanban:
 
 Link: https://trello.com/b/MVjFrjpx/kanban
 
