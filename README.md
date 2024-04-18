@@ -63,6 +63,17 @@ A documentação deve ser atualizada regularmente para refletir quaisquer altera
 
 Compatibilidade: Certificar-se de que a API seja compatível com as tecnologias especificadas (Lombok, Spring Boot, MySQL e Java 21) e que possa ser facilmente integrada com outras ferramentas e sistemas e deve ser garantida a compatibilidade com uma variedade de navegadores e dispositivos, para garantir uma experiência consistente para os lojistas que acessam a plataforma de diferentes plataformas.
 
+## Infraestrutura Api e Banco de dados:
+
+**APIs**:
+   - Implementaremos a API de Cadastro de Lojistas utilizando Spring Boot, que irá lidar com o registro de lojistas, autenticação, gestão de produtos, gestão de pedidos, integração de pagamento e relatórios de vendas.
+   - Protegeremos a autenticação utilizando JWT para gerar tokens de acesso e refresh.
+   - Utilizaremos técnicas de criptografia para proteger os dados sensíveis, como senhas e informações de pagamento.
+   - Implementaremos endpoints RESTful para cada funcionalidade da API, seguindo as práticas recomendadas de design de API.
+ 
+ **Banco de Dados**:
+   - Utilizaremos MySQL como sistema de gerenciamento de banco de dados relacional para armazenar informações dos lojistas, produtos, pedidos, transações de pagamento e relatórios de vendas.
+   - iremos modelar o banco de dados de acordo com as necessidades da aplicação, garantindo eficiência e integridade dos dados.
 ---
 
 ### Campos
