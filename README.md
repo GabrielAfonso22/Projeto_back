@@ -45,17 +45,23 @@ Os relatórios devem ser exportáveis em formatos comuns, como CSV ou PDF, para 
 
 ## Requisitos Não Funcionais:
 
-Segurança: Garantir a segurança dos dados dos lojistas e dos clientes, implementando medidas como criptografia de dados, autenticação robusta e prevenção contra ataques de segurança.
+Segurança: arantir que os dados dos lojistas e clientes estejam protegidos por medidas como criptografia de dados e autenticação segura.
+Implementar práticas de segurança para evitar ameaças como injeção de SQL e XSS, utilizando cookie de sessão.
 
-Desempenho: Assegurar que a API seja eficiente e responsiva, mesmo com um grande volume de acessos e transações simultâneas.
+Desempenho:
+A API deve ser otimizada para garantir tempos de resposta rápidos, mesmo durante períodos de alto tráfego.
+As consultas ao banco de dados devem ser eficientes, utilizando índices adequados e consultas otimizadas para minimizar o tempo de execução.
+Deve ser implementado um sistema de cache para armazenar em cache dados frequentemente acessados e reduzir a carga no banco de dados.
 
 Escalabilidade: Projetar a API para ser escalável, permitindo que ela cresça conforme a demanda, tanto em termos de número de lojistas quanto de volume de transações.
 
-Disponibilidade: Garantir que a API esteja sempre disponível para os lojistas e clientes, minimizando o tempo de inatividade e implementando medidas de recuperação em caso de falhas.
+Disponibilidade: Deve ser implementado um sistema de monitoramento para detectar falhas e degradação de desempenho em tempo real, com alertas configurados para a equipe de operações.
+Deve ser realizada uma estratégia de backup regular e testes de recuperação de desastres para garantir a recuperação de dados em caso de falha do sistema.
 
-Documentação: Fornecer uma documentação clara e abrangente da API, incluindo exemplos de uso, endpoints disponíveis, parâmetros necessários e possíveis códigos de erro.
+A documentação da API deve ser abrangente, detalhando todos os endpoints disponíveis, os parâmetros necessários para cada chamada, os códigos de status retornados e exemplos de uso.
+A documentação deve ser atualizada regularmente para refletir quaisquer alterações ou atualizações na API.
 
-Compatibilidade: Certificar-se de que a API seja compatível com as tecnologias especificadas (Lombok, Spring Boot, MySQL e Java 21) e que possa ser facilmente integrada com outras ferramentas e sistemas.
+Compatibilidade: Certificar-se de que a API seja compatível com as tecnologias especificadas (Lombok, Spring Boot, MySQL e Java 21) e que possa ser facilmente integrada com outras ferramentas e sistemas e deve ser garantida a compatibilidade com uma variedade de navegadores e dispositivos, para garantir uma experiência consistente para os lojistas que acessam a plataforma de diferentes plataformas.
 
 ---
 
