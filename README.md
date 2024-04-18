@@ -45,7 +45,7 @@ Os relatórios devem ser exportáveis em formatos comuns, como CSV ou PDF, para 
 
 ## Requisitos Não Funcionais:
 
-Segurança: arantir que os dados dos lojistas e clientes estejam protegidos por medidas como criptografia de dados e autenticação segura.
+Segurança: Garantir que os dados dos lojistas e clientes estejam protegidos por medidas como criptografia de dados e autenticação segura.
 Implementar práticas de segurança para evitar ameaças como injeção de SQL e XSS, utilizando cookie de sessão.
 
 Desempenho:
