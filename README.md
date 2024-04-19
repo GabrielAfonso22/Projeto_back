@@ -88,6 +88,7 @@ Compatibilidade: Certificar-se de que a API seja compatível com as tecnologias 
 | **cnpj**                | string         | SIM         |                
 | **email**               | string         | SIM         |
 | **telefone**            | string         | SIM         |
+| **enderecos**           | []endereco     | SIM         |
 | **endereco.logradouro** | string         | SIM         |
 | **endereco.numero**     | string         | SIM         |
 | **endereco.bairro**     | string         | SIM         |
@@ -103,6 +104,7 @@ Compatibilidade: Certificar-se de que a API seja compatível com as tecnologias 
 | **num_agencia**         | string         | NAO         |
 | **num_conta**           | string         | NAO         |
 | **cod_banco**           | string         | NAO         |
+| **tipo_conta**          | int            | NAO         |
 
 
 ### Endpoints
