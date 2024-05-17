@@ -43,8 +43,7 @@ public class LojistaControllerTest {
     public void setup() {
         loja = new Loja();
         loja.setCnpj("82427325000110");
-        loja.setBanner("http://xpto.com");
-        loja.setNome("Lojista do Teste");
+        loja.setNomeLoja("Loja do teste");
         loja.setId(1);
 
         Endereco endereco = new Endereco();
@@ -74,7 +73,7 @@ public class LojistaControllerTest {
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id", is(id)))
-                .andExpect(jsonPath("$.nome", is(this.loja.getNome())));
+                .andExpect(jsonPath("$.nome", is(this.loja.getNomeLoja())));
     }
 
     @Test
