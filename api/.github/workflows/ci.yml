@@ -22,28 +22,34 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Set up JDK 21
+      working-directory: ./api
       uses: actions/setup-java@v3
       with:
         java-version: '21'
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
+      working-directory: ./api
       run: mvn compile --file pom.xml
     - name: Tests with Maven
+      working-directory: ./api
       run: mvn test --file pom.xml
     - name: Cache SonarCloud packages
+      working-directory: ./api
       uses: actions/cache@v3
       with:
         path: ~/.sonar/cache
         key: ${{ runner.os }}-sonar
         restore-keys: ${{ runner.os }}-sonar
     - name: Cache Maven packages
+      working-directory: ./api
       uses: actions/cache@v3
       with:
         path: ~/.m2
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2
     - name: Build and analyze
+      working-directory: ./api
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
