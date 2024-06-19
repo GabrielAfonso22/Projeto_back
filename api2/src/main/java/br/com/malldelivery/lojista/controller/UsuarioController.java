@@ -20,6 +20,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/usuario")
@@ -34,8 +35,14 @@ public class UsuarioController {
     private AuthenticationManager authenticationManager;
 
 
-    @PostMapping
+    @PostMapping("/criar")
     public ResponseEntity<Usuario> criar(@RequestBody @Valid UsuarioRequest request) throws LojaException {
+        Usuario usuario = this.usuarioService.obterUsuarioPorUsername(request.getUsername());
+
+        if (usuario != null) {
+            return new ResponseEntity<>(usuario, HttpStatus.CONFLICT);
+        }
+
         Usuario usuarioNovo = this.usuarioService.criar(request.getUsername(), request.getPassword(), request.getIdPerfil());
         return new ResponseEntity<>(usuarioNovo, HttpStatus.CREATED);
     }
@@ -44,10 +51,8 @@ public class UsuarioController {
     public ResponseEntity<TokenResponse> login(@RequestBody @Valid UsuarioRequest request) throws LojaException {
         Usuario usuario = this.usuarioService.obterUsuarioPorUsernameAndPassword(request.getUsername(), request.getPassword());
 
-        //Cria o token JWT
         String jwtToken = jwtTokenService.generateToken(new UserDetailsImpl(usuario));
 
-        //Seta o token para a resposta
         TokenResponse response = new TokenResponse();
         response.setToken(jwtToken);
 

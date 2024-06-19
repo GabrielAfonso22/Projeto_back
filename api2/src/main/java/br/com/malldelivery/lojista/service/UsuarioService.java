@@ -49,8 +49,16 @@ public class UsuarioService {
             return null;
         return optUsuario.get();
     }
+
     public Usuario obterUsuarioPorUsernameAndPassword(String username, String password) {
         Optional<Usuario> optUsuario = this.usuarioRepository.findByUsernameAndPassword(username, password);
+        if (optUsuario.isEmpty())
+            return null;
+        return optUsuario.get();
+    }
+
+    public Usuario obterUsuarioPorUsername(String username) {
+        Optional<Usuario> optUsuario = this.usuarioRepository.findByUsername(username);
         if (optUsuario.isEmpty())
             return null;
         return optUsuario.get();

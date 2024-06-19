@@ -19,7 +19,7 @@ public class LojistaController {
     @Autowired
     private LojaService lojaService;
 
-    @PostMapping
+    @PostMapping("criar")
     public ResponseEntity<LojistaResponse> criarLoja(@RequestBody @Valid LojistaRequest request) throws Exception {
         LojistaResponse response = this.lojaService.criarLoja(request);
         return new ResponseEntity<>(response, HttpStatus.OK);

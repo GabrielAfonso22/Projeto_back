@@ -30,16 +30,16 @@ public class LojaService {
         Loja loja = Loja.fromRequest(request);
 
         //Verifica se o cpnj já está cadastrado
-        if (this.lojaRepository.findByCnpj(loja.getCnpj()).isEmpty() == false) {
+        if (!this.lojaRepository.findByCnpj(loja.getCnpj()).isEmpty()) {
             throw new LojaException("cpnj", "CNPJ do lojista já cadastrado.");
         }
 
         //Salva o endereço no banco de dados
-        Endereco endereco = loja.getEnderecos().get(0);
+        Endereco endereco = loja.getEnderecos().getFirst();
         this.enderecoRepository.save(endereco);
 
         //Salva o dado bancario no banco de dados
-        DadoBancario dadoBancario = loja.getDadosBancarios().get(0);
+        DadoBancario dadoBancario = loja.getDadosBancarios().getFirst();
         this.dadoBancarioRepository.save(dadoBancario);
 
         //Adicionando a data de cadastro
