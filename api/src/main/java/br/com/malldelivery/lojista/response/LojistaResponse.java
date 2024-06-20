@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 public class LojistaResponse {
     private int id;
     private String nome;
+    private String cnpj;
     private String telefone;
     private String banner;
     private String urlLoja;
