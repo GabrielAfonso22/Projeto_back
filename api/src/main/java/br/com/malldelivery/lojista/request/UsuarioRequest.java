@@ -15,3 +15,4 @@ public class UsuarioRequest {
     @NotNull(message = "O campo perfil não pode ser vazio")
     private Integer idPerfil;
 }
+

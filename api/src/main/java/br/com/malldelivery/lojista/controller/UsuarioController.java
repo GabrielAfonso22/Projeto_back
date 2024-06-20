@@ -2,6 +2,7 @@ package br.com.malldelivery.lojista.controller;
 
 import br.com.malldelivery.lojista.exception.LojaException;
 import br.com.malldelivery.lojista.model.Usuario;
+import br.com.malldelivery.lojista.request.LoginRequest;
 import br.com.malldelivery.lojista.request.UsuarioRequest;
 import br.com.malldelivery.lojista.response.LojistaResponse;
 import br.com.malldelivery.lojista.response.TokenResponse;
@@ -48,7 +49,7 @@ public class UsuarioController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<TokenResponse> login(@RequestBody @Valid UsuarioRequest request) throws LojaException {
+    public ResponseEntity<TokenResponse> login(@RequestBody @Valid LoginRequest request) throws LojaException {
         Usuario usuario = this.usuarioService.obterUsuarioPorUsernameAndPassword(request.getUsername(), request.getPassword());
 
         String jwtToken = jwtTokenService.generateToken(new UserDetailsImpl(usuario));
