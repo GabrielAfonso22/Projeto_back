@@ -45,17 +45,16 @@ public class SecurityConfiguration extends SecurityConfigurerAdapter {
     }
 
     public static final String[] ENDPOINTS_WITH_AUTHENTICATION_NOT_REQUIRED = {
-            "/usuario/criar",
             "/usuario/login",
             "/swagger-ui/**",
             "/v3/api-docs/**",
-            "lojista/**",
-            "/usuario"
+            "/lojista/criar",
     };
 
     public static final String[] ENDPOINTS_WITH_AUTHENTICATION_REQUIRED = {
-//        "/usuario",
-//        "/lojista/**",
+        "/usuario/{id}",
+        "/usuario/criar",
+        "/lojista/**",
     };
 
     @Bean

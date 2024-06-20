@@ -60,8 +60,8 @@ public class LojistaControllerTest {
     @BeforeEach
     public void setup() {
         loja = new Loja();
-        loja.setCnpj("82427325000110");
-        loja.setBanner("http://xpto.com");
+        loja.setCnpj("54144813000100");
+        loja.setBanner("http://xpto.com.br");
         loja.setNome("Lojista do Teste");
         loja.setId(1);
 
@@ -81,17 +81,37 @@ public class LojistaControllerTest {
 
         loja.getDadosBancarios().add(dadoBancario);
 
-        //Configuração de Autenticação para testes
         this.mvc = MockMvcBuilders
                 .webAppContextSetup(context)
                 .apply(springSecurity())
                 .build();
+    }
 
+    private LojistaRequest lojistaRequest;
+    @BeforeEach
+    public void Setup() {
+        lojistaRequest = new LojistaRequest();
+        lojistaRequest.setCnpj("12.345.679/9001-90");
+        lojistaRequest.setCep("12345-678");
+        lojistaRequest.setCidade("Cidade Teste");
+        lojistaRequest.setBairro("Bairro Teste");
+        lojistaRequest.setAgencia("1111");
+        lojistaRequest.setNome("Testes Lojas");
+        lojistaRequest.setCodigoBanco("3333");
+        lojistaRequest.setBanner("http://xpto.com");
+        lojistaRequest.setTipoConta("CC");
+        lojistaRequest.setTelefone("(23)99999-9999");
+        lojistaRequest.setLogradouro("sdfadfasfda");
+        lojistaRequest.setEstado("rj");
+        lojistaRequest.setComplemento("apt 000");
+        lojistaRequest.setEmail("blabal@blabla.com");
+        lojistaRequest.setNumMaxProduto(5);
+        lojistaRequest.setUrlLoja("https://xptxot.com.br");
     }
 
     @Test
     @WithMockUser(username = "user1", password = "pwd", roles = "USER")
-    public void deveConsultarLojistaPorIdComSucesso() throws Exception {
+    public void deveConsultarLojistaPorIdSuccess() throws Exception {
         int id = 1;
         given(this.lojaService.obterLojistaPorId(id)).willReturn(Loja.toResponse(this.loja));
 
@@ -114,5 +134,15 @@ public class LojistaControllerTest {
                 .andExpect(status().isNotFound());
     }
 
+    @Test
+    @WithMockUser(username = "user1", password = "pwd", roles = "USER")
+    public void deveConsultarLojistaPorCNPJSuccess() throws Exception {
+        int id = 1;
+        given(this.lojaService.obterLojistaPorId(id)).willReturn(null);
+
+        mvc.perform(MockMvcRequestBuilders.get("/lojista/" + id)
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound());
+    }
 }
 

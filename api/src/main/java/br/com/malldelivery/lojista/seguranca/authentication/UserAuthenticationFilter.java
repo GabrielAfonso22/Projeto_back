@@ -18,6 +18,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Optional;
 
 @Component
 public class UserAuthenticationFilter extends OncePerRequestFilter {
@@ -35,8 +36,13 @@ public class UserAuthenticationFilter extends OncePerRequestFilter {
 
             if (token != null) {
                 String subject = jwtTokenService.getSubjectFromToken(token);
-                Usuario user = usuarioRepository.findByUsername(subject).get();
-                UserDetailsImpl userDetails = new UserDetailsImpl(user);
+                Optional<Usuario> user = usuarioRepository.findByUsername(subject);
+                if (user.isEmpty()) {
+                    response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Usuário não encontrado");
+                    return;
+                }
+
+                UserDetailsImpl userDetails = new UserDetailsImpl(user.get());
 
                 //Cria o objeto de autenticação
                     UsernamePasswordAuthenticationToken authenticationToken =
