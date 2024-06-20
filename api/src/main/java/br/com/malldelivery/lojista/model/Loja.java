@@ -27,6 +27,9 @@ public class Loja {
     private String cnpj;
 
     @Column
+    private String email;
+
+    @Column
     private LocalDateTime dtCadastro;
 
     @Column
@@ -46,7 +49,6 @@ public class Loja {
 
     @Column
     private String userNameAtivacao;
-
 
     @OneToMany
     @JoinColumn(name = "id_loja", referencedColumnName = "id")

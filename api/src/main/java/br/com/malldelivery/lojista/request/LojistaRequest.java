@@ -15,6 +15,10 @@ public class LojistaRequest {
     @Pattern(regexp = "^[0-9]{14}$", message = "Campo cnpj não está em um formato valido")
     private String cnpj;
 
+    @NotBlank(message = "Campo email não pode ser vazio")
+    @Pattern(regexp = "^[\\w-.]+@([\\w-]+\\.)+[\\w-]{2,4}$")
+    private String email;
+
     @NotBlank(message = "Campo telefone não pode ser vazio")
     @Pattern(regexp = "^\\([0-9]{2}\\)[0-9]{5}-[0-9]{4}$", message = "Campo telefone não está em um formato valido")
     private String telefone;
