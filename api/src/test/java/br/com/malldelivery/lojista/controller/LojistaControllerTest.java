@@ -110,6 +110,11 @@ public class LojistaControllerTest {
         lojistaRequest.setEmail("blabal@blabla.com");
         lojistaRequest.setNumMaxProduto(5);
         lojistaRequest.setUrlLoja("https://xptxot.com.br");
+
+        this.mvc = MockMvcBuilders
+                .webAppContextSetup(context)
+                .apply(springSecurity())
+                .build();
     }
 
     @Test
@@ -228,6 +233,7 @@ public class LojistaControllerTest {
         int id = 1;
         LojistaAtivacaoRequest request = new LojistaAtivacaoRequest();
         request.setEnabled(true);
+        request.setUserNameAtivacao("nome ativacao");
 
         LojistaResponse expectedResponse = new LojistaResponse();
         expectedResponse.setId(id);
@@ -240,7 +246,7 @@ public class LojistaControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.ativo", is(request.getEnabled())));
+                .andExpect(jsonPath("$.enabled", is(request.getEnabled())));
     }
 
     @Test

@@ -12,6 +12,6 @@ import java.util.Optional;
 
 @Repository
 public interface LojaRepository extends JpaRepository<Loja, Integer> {
-    @Query(value = "select * from loja l where l.cnpj = :cnpj", nativeQuery = true)
+    @Query("select l, l.cnpj from loja l where l.cnpj = ?1")
     Optional<Loja> findByCnpj(@Param("cnpj") String cnpj);
 }
