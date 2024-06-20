@@ -31,9 +31,6 @@ import java.util.List;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration extends SecurityConfigurerAdapter {
-//    protected void configure(HttpSecurity http) throws Exception{
-//        http.cors().and().csrf().disable();
-//    }
 
     @Bean
     CorsConfigurationSource corsConfigurationSource() {
@@ -59,7 +56,6 @@ public class SecurityConfiguration extends SecurityConfigurerAdapter {
     public static final String[] ENDPOINTS_WITH_AUTHENTICATION_REQUIRED = {
 //        "/usuario",
 //        "/lojista/**",
-            "/asdfasdf/"
     };
 
     @Bean
@@ -102,25 +98,3 @@ public class SecurityConfiguration extends SecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 }
-//
-//@EnableWebSecurity
-//public class SecurityConfiguration {
-//
-//    @Override
-//    protected void configure(HttpSecurity http) throws Exception{
-//        http.cors().and().csrf().disable();
-//    }
-//
-//    @Bean
-//    CorsConfigurationSource corsConfigurationSource() {
-//        CorsConfiguration configuration = new CorsConfiguration();
-//        configuration.setAllowedOrigins(Arrays.asList("*"));
-//        configuration.setAllowedMethods(Arrays.asList("*"));
-//        configuration.setAllowedHeaders(Arrays.asList("*"));
-//        configuration.setAllowCredentials(true);
-//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-//        source.registerCorsConfiguration("/**", configuration);
-//        return source;
-//    }
-//
-//}
