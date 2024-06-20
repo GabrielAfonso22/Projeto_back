@@ -12,10 +12,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.when;
+
 @SpringBootTest
 public class UsuarioServiceTest {
     @MockBean
@@ -59,16 +65,6 @@ public class UsuarioServiceTest {
 //    }
 
     @Test
-    public void DeveCriarUmUsuarioFailPerfilNaoEncontrado() {
-        given(this.perfilRepository.existsById(1))
-            .willReturn(false);
-
-        Assertions.assertThrows(Exception.class, () -> {
-            this.usuarioService.criar(request.getUsername(), request.getPassword(), 1);
-        });
-    }
-
-    @Test
     public void DeveJogarUmaExcecaoUsuarioJaExiste() {
         Perfil perfil = new Perfil();
         perfil.setId(1);
@@ -86,18 +82,6 @@ public class UsuarioServiceTest {
         Assertions.assertThrows(Exception.class, () -> {
             this.usuarioService.criar(request.getUsername(), request.getPassword(), request.getIdPerfil());
         });
-    }
-
-    @Test
-    public void DeveJogarUmaExcecaoPerfilNaoEncontrado() {
-        given(this.perfilRepository.existsById(-1))
-            .willReturn(false);
-
-        try {
-            this.usuarioService.criar(request.getUsername(), request.getPassword(), -1);
-        } catch (LojaException e) {
-            Assertions.assertEquals("Perfil não encontrado", e.getMessage());
-        }
     }
 
     @Test
@@ -122,7 +106,158 @@ public class UsuarioServiceTest {
         Assertions.assertNotNull(this.usuarioService.obterUsuarioPorId(1));
         Assertions.assertEquals(1, this.usuarioService.obterUsuarioPorId(1).getId());
     }
+
+    @Test
+    public void DeveRetornarUmUsuarioQuandoEncontradoPorUsernameESenha() {
+        String username = "usuario";
+        String password = "senha";
+        Usuario usuarioEsperado = new Usuario();
+        usuarioEsperado.setUsername(username);
+        usuarioEsperado.setPassword(password);
+
+        when(usuarioRepository.findByUsernameAndPassword(username, password)).thenReturn(Optional.of(usuarioEsperado));
+
+        Usuario actualUser = usuarioService.obterUsuarioPorUsernameAndPassword(username, password);
+
+        Assertions.assertEquals(usuarioEsperado, actualUser);
+    }
+
+    @Test
+    public void DeveRetornarNullQuandoUsuarioESenhaNaoCoincidem() {
+        String username = "usuario";
+        String password = "senha";
+
+        when(usuarioRepository.findByUsernameAndPassword(username, password)).thenReturn(Optional.empty());
+
+        Usuario usuario = usuarioService.obterUsuarioPorUsernameAndPassword(username, password);
+
+        assertNull(usuario);
+    }
+
+    @Test
+    public void DeveRetornarNullQuandoUsuarioNaoExiste() {
+        String username = "usuario";
+        String password = "usuario";
+
+        when(usuarioRepository.findByUsernameAndPassword(username, password)).thenReturn(Optional.empty());
+
+        Usuario usuario = usuarioService.obterUsuarioPorUsernameAndPassword(username, password);
+
+        assertNull(usuario);
+    }
+
+    @Test
+    public void DeveRetornarUsuarioQuandoIdExiste() {
+        int id = 1;
+        Usuario usuario = new Usuario();
+        usuario.setId(id);
+
+        given(this.usuarioRepository.findById(id)).willReturn(Optional.of(usuario));
+
+        Usuario user = usuarioService.obterUsuarioPorId(id);
+
+        Assertions.assertEquals(usuario, user);
+    }
+
+    @Test
+    public void DeveRetornarNullQuandoIdNaoExiste() {
+        int idNaoExistente = -1;
+
+        given(this.usuarioRepository.findById(idNaoExistente)).willReturn(Optional.empty());
+
+        Usuario usuario = usuarioService.obterUsuarioPorId(idNaoExistente);
+
+        assertNull(usuario);
+    }
+
+    @Test
+    public void DeveCriarUsuarioQuandoPerfilExiste() throws LojaException {
+        String username = "usuario";
+        String password = "senha";
+        int idPerfil = 1;
+
+        Perfil perfil = new Perfil();
+        perfil.setId(idPerfil);
+
+        given(this.perfilRepository.findById(idPerfil)).willReturn(Optional.of(perfil));
+
+        Usuario usuario = new Usuario();
+        usuario.setUsername(username);
+        usuario.setPassword(password);
+        usuario.getPerfis().add(perfil);
+
+        given(this.usuarioRepository.save(any(Usuario.class))).willReturn(usuario);
+
+        Usuario user = usuarioService.criar(username, password, idPerfil);
+
+        Assertions.assertEquals(usuario, user);
+    }
+
+    @Test
+    public void DeveJogarUmaExcecaoQuandoPerfilNaoExiste() {
+        String username = "usuario";
+        String password = "senha";
+        int idPerfil = -1;
+
+        given(this.perfilRepository.findById(idPerfil)).willReturn(Optional.empty());
+
+        Assertions.assertThrows(LojaException.class, () -> {
+            usuarioService.criar(username, password, idPerfil);
+        });
+    }
+
+    @Test
+    public void DeveRetornarTodosOsUsuarios() {
+        Usuario user1 = new Usuario();
+        Usuario user2 = new Usuario();
+        List<Usuario> usuarios = Arrays.asList(user1, user2);
+
+        given(this.usuarioRepository.findAll()).willReturn(usuarios);
+
+        List<Usuario> actualUsers = usuarioService.obterTodos();
+
+        Assertions.assertEquals(usuarios, actualUsers);
+    }
+
+    @Test
+    public void DeveRetornarListaVazioQuandoNaoExistemUsuarios() {
+        given(this.usuarioRepository.findAll()).willReturn(Collections.emptyList());
+
+        List<Usuario> usuarios = usuarioService.obterTodos();
+
+        Assertions.assertTrue(usuarios.isEmpty());
+    }
+
+    @Test
+    public void DeveRetornarUsuarioQuandoUsernameExiste() {
+        String username = "usuario";
+        Usuario usuario = new Usuario();
+        usuario.setUsername(username);
+
+        given(this.usuarioRepository.findByUsername(username)).willReturn(Optional.of(usuario));
+
+        Usuario user = usuarioService.obterUsuarioPorUsername(username);
+
+        Assertions.assertEquals(usuario, user);
+    }
+
+    @Test
+    public void DeveRetornarNullQuandoUsernameNaoExiste() {
+        String nonExistentUsername = "usuario";
+
+        given(this.usuarioRepository.findByUsername(nonExistentUsername)).willReturn(Optional.empty());
+
+        Usuario usuario = usuarioService.obterUsuarioPorUsername(nonExistentUsername);
+
+        assertNull(usuario);
+    }
 }
+
+
+
+
+
+
 
 
 
