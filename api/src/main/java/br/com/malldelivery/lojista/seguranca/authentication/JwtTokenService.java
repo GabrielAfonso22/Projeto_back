@@ -50,6 +50,6 @@ public class JwtTokenService {
     }
 
     public Instant expirationDate() {
-        return ZonedDateTime.now().plusHours(2).toInstant();
+        return ZonedDateTime.now().plusDays(5).toInstant();
     }
 }
