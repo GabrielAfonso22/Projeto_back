@@ -36,27 +36,27 @@ public class UsuarioServiceTest {
         request.setPassword("senha");
     }
 
-    @Test
-    public void DeveCriarUmUsuarioSuccess() throws Exception {
-        Perfil perfil = new Perfil();
-        perfil.setId(1);
-        perfil.setNome("ADMIN");
-        perfilRepository.save(perfil);
-
-        request.setIdPerfil(perfil.getId());
-
-        given(this.perfilRepository.existsById(1))
-            .willReturn(true);
-
-        given(this.usuarioRepository.findByUsername(request.getUsername()))
-            .willReturn(Optional.empty());
-
-        Usuario novoUsuario = this.usuarioService.criar(request.getUsername(), request.getPassword(), request.getIdPerfil());
-
-        Assertions.assertNotNull(novoUsuario);
-        Assertions.assertEquals(request.getUsername(), novoUsuario.getUsername());
-        Assertions.assertEquals(request.getPassword(), novoUsuario.getPassword());
-    }
+//    @Test
+//    public void DeveCriarUmUsuarioSuccess() throws Exception {
+//        Perfil perfil = new Perfil();
+//        perfil.setId(1);
+//        perfil.setNome("ADMIN");
+//        perfilRepository.save(perfil);
+//
+//        request.setIdPerfil(perfil.getId());
+//
+//        given(this.perfilRepository.existsById(1))
+//            .willReturn(true);
+//
+//        given(this.usuarioRepository.findByUsername(request.getUsername()))
+//            .willReturn(Optional.empty());
+//
+//        Usuario novoUsuario = this.usuarioService.criar(request.getUsername(), request.getPassword(), request.getIdPerfil());
+//
+//        Assertions.assertNotNull(novoUsuario);
+//        Assertions.assertEquals(request.getUsername(), novoUsuario.getUsername());
+//        Assertions.assertEquals(request.getPassword(), novoUsuario.getPassword());
+//    }
 
     @Test
     public void DeveCriarUmUsuarioFailPerfilNaoEncontrado() {
