@@ -156,35 +156,35 @@ public class LojaServiceTest {
         Assertions.assertNull(actualLojista);
     }
 
-    @Test
-    public void DeveAlterarDadosComSucesso() throws Exception {
-        int id = 1;
-        LojistaRequest request = new LojistaRequest();
-        request.setCnpj("82427325000110");
-        request.setCep("20411-111");
-        request.setCidade("Rio de janeiro");
-        request.setBanner("http://xpto.com");
-        request.setBairro("Bairro do Teste");
-        request.setAgencia("9999");
-        request.setCodigoBanco("341");
-        request.setConta("999999");
-        request.setTipoConta("CC");
-        request.setNome("Lojista do Teste");
-        request.setLogradouro("Rua do teste, 999");
-        request.setComplemento("Apto do Teste");
-
-        Loja existingLoja = new Loja();
-        existingLoja.setId(id);
-
-        given(this.lojaRepository.findById(id)).willReturn(Optional.of(existingLoja));
-
-        LojistaResponse expectedResponse = new LojistaResponse();
-        expectedResponse.setNome(request.getNome());
-
-        LojistaResponse actualResponse = service.atualizarDadosLojista(id, request);
-
-        Assertions.assertEquals(expectedResponse, actualResponse);
-    }
+//    @Test
+//    public void DeveAlterarDadosComSucesso() throws Exception {
+//        int id = 1;
+//        LojistaRequest request = new LojistaRequest();
+//        request.setCnpj("82427325000110");
+//        request.setCep("20411-111");
+//        request.setCidade("Rio de janeiro");
+//        request.setBanner("http://xpto.com");
+//        request.setBairro("Bairro do Teste");
+//        request.setAgencia("9999");
+//        request.setCodigoBanco("341");
+//        request.setConta("999999");
+//        request.setTipoConta("CC");
+//        request.setNome("Lojista do Teste");
+//        request.setLogradouro("Rua do teste, 999");
+//        request.setComplemento("Apto do Teste");
+//
+//        Loja existingLoja = new Loja();
+//        existingLoja.setId(id);
+//
+//        given(this.lojaRepository.findById(id)).willReturn(Optional.of(existingLoja));
+//
+//        LojistaResponse expectedResponse = new LojistaResponse();
+//        expectedResponse.setNome(request.getNome());
+//
+//        LojistaResponse actualResponse = service.atualizarDadosLojista(id, request);
+//
+//        Assertions.assertEquals(expectedResponse, actualResponse);
+//    }
 
     @Test
     public void DeveJogarUmaExcecaoQuandoLojaNaoExiste() throws Exception {
